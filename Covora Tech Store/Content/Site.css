@@ -1,0 +1,72 @@
+/* Bootstrap handles layout; these rules provide Covora Tech branding. */
+/* Shared colours used by the page background, text, borders and Bootstrap overrides. */
+:root { --navy:#062b65; --teal:#007c7b; --ink:#183347; --muted:#566c78; --paper:#f8f9f5; --tint:#e8f4f0; --line:#d5e3df; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:'Segoe UI',Arial,sans-serif; }
+/* Use a full-height column so the main content fills space above the footer. */
+.site-form { min-height:100vh; display:flex; flex-direction:column; }
+main { flex:1; }
+/* Link colours and visible keyboard focus indicators. */
+a { color:var(--teal); text-underline-offset:.2em; }
+a:hover { color:var(--navy); }
+a:focus-visible,button:focus-visible { outline:3px solid var(--teal); outline-offset:4px; }
+/* Hide the skip link above the page until a keyboard user focuses it. */
+.skip-link { position:absolute; top:-5rem; left:1rem; z-index:100; padding:.75rem; background:white; }
+.skip-link:focus { top:.5rem; }
+/* Announcement strip and navigation background shared by all pages. */
+.announcement { background:var(--navy); color:white; text-align:center; padding:.5rem 1rem; font-size:.75rem; letter-spacing:.09em; }
+.site-nav { background:#f0f8f7; border-bottom:1px solid var(--line); }
+/* Bootstrap navbar branding: remove default padding and size the logo, including its transparent border. */
+.navbar-brand { padding:0; margin-right:1rem; }
+.brand-logo { display:block; width:126px; height:126px; object-fit:contain; max-width:100%; }
+/* Override Bootstrap navigation link spacing and colours; active marks the current page. */
+.site-nav .nav-link { color:var(--ink); font-weight:600; padding:.65rem 1rem !important; border-radius:.4rem; }
+.site-nav .nav-link:hover,.site-nav .nav-link.active { color:#006967; background:#deefea; }
+.navbar-toggler { border-color:#879eaa; }
+/* Heading sizes scale with the viewport while staying within readable limits. */
+h1,h2,h3 { color:var(--ink); font-weight:700; letter-spacing:-.025em; }
+h1 { font-size:clamp(2rem,4vw,3.4rem); line-height:1.12; }
+h2 { font-size:clamp(1.5rem,2.5vw,2rem); }
+/* Small section labels and a colour/size override for Bootstrap lead paragraphs. */
+.eyebrow { color:var(--teal); font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; }
+.lead { color:var(--muted); font-size:1.1rem; line-height:1.7; max-width:38rem; }
+/* Spacing for the home introduction, page headings and content sections. */
+.hero { padding:3rem 0; }
+.page-heading { background:var(--tint); padding:2.5rem 0; }
+.page-heading .lead { margin-bottom:0; }
+.section-space { padding-top:2.5rem; padding-bottom:3rem; }
+/* Bootstrap buttons: adjust spacing and use --bs-btn-* variables for brand colours and interaction states. */
+.btn { padding:.8rem 1.2rem; font-weight:600; }
+.btn-primary { --bs-btn-bg:var(--teal); --bs-btn-border-color:var(--teal); --bs-btn-hover-bg:#006562; --bs-btn-hover-border-color:#006562; --bs-btn-active-bg:#005955; --bs-btn-active-border-color:#005955; }
+.btn-outline-secondary { --bs-btn-color:var(--ink); --bs-btn-border-color:#8fa5ae; --bs-btn-hover-bg:var(--ink); }
+/* Bootstrap cards: apply shared borders, rounded corners and a white background. */
+.card { border:1px solid var(--line); border-radius:1rem; overflow:hidden; background:white; }
+/* Product media area: show a labelled placeholder until a product image is available. */
+.product-card { box-shadow:0 4px 16px #18334706; }
+.product-media { background:#e2f0eb; min-width:0; }
+.product-placeholder { min-height:210px; padding:1.5rem; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:#44695f; gap:.4rem; border-bottom:1px solid var(--line); }
+.placeholder-mark { display:grid; place-items:center; border:1px solid #a6c9bf; border-radius:1rem; width:3.5rem; height:3.5rem; font-size:1.2rem; font-weight:700; margin-bottom:.4rem; }
+/* Keep product images at a consistent height without cropping their proportions. */
+.product-image { display:block; width:100%; height:210px; object-fit:contain; padding:1rem; }
+/* Adjust Bootstrap card-body padding and arrange category/ID details above each product title. */
+.product-card .card-body { padding:1.4rem; }
+.product-meta { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.5rem; font-size:.75rem; margin-bottom:.9rem; }
+.product-category { color:var(--teal); font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+/* Override the Bootstrap text-muted utility; !important matches its utility declaration. */
+.product-id,.text-muted { color:var(--muted) !important; }
+/* Product descriptions and prices within the shared product card control. */
+.product-title { font-size:1.25rem; }
+.product-description { color:var(--muted); line-height:1.6; }
+.product-price { color:var(--navy); font-size:1.2rem; font-weight:700; }
+/* About page story panel and Contact page cards, address text and enquiry note. */
+.story-panel { background:var(--tint); border-radius:1rem; padding:2.5rem; }
+.story-panel p:last-child { margin-bottom:0; }
+.contact-card { padding:1.5rem; }
+address { font-style:normal; }
+.contact-value { overflow-wrap:anywhere; }
+.contact-note { background:var(--navy); color:white; padding:1.5rem; border-radius:1rem; }
+/* Shared footer colours, spacing and links. */
+.site-footer { background:var(--navy); color:#e4eff6; padding:1.7rem 0; }
+.site-footer p { margin-bottom:.25rem; }
+.site-footer a { color:white; }
+/* Below Bootstrap md (768px), reduce the logo and section spacing and pad the collapsed menu. */
+@media(max-width:767.98px) { .brand-logo { width:104px; height:104px; } .navbar-collapse { padding:.5rem 0 1rem; } .hero { padding:2rem 0; } .story-panel { padding:1.5rem; } }
