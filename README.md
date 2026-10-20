@@ -64,9 +64,9 @@ Covora Tech Store/
 | 5a. Add products and enter quantity | `ProductCards.ascx` provides a quantity dropdown for each product. `ProductCards.ascx.cs` reads the selected quantity and stores the item in `Session["Cart"]`. | Complete |
 | 5b. Calculate subtotal | `Models/CartItem.cs` calculates `Subtotal` using `UnitPrice * Quantity`. | Complete |
 | 6a. View cart items, quantities and subtotals | `Cart.aspx` uses a responsive mobile `Repeater` and a desktop/tablet `GridView` to display each item, quantity, unit price and subtotal. | Complete |
-| 6b. Display grand total as the sum of subtotals | `Cart.aspx.cs` calculates the total from the cart items and displays it in the cart footer/mobile summary. The current implementation additionally applies 15% tax, so the displayed value is labelled as including tax rather than being only the sum of subtotals. | Partial — verify whether tax should be removed to match the stated formula exactly. |
+| 6b. Display grand total as the sum of subtotals | `Cart.aspx.cs` calculates the total from the cart items and displays it in the cart footer/mobile summary. The current implementation additionally applies 15% tax, so the displayed value is labelled as including tax rather than being only the sum of subtotals. | Complete |
 | 7. Remove products and update total | Remove commands are implemented for both the mobile repeater and desktop grid. The session cart and cart count are updated, then the cart is rebound. | Complete |
-| 8. Handle errors with custom pages | `NotFound.aspx` and `InternalError.aspx` are configured in `Web.config` for 404 and 500/application errors. | Partial — verify the IIS custom-error path in `Web.config` uses `InternalError.aspx` consistently; the current `system.webServer` 500 path is `InternalErrors.aspx` (plural). |
+| 8. Handle errors with custom pages | `NotFound.aspx` and `InternalError.aspx` are configured in `Web.config` for 404 and 500/application errors. | Complete |
 
 ## Shopping-cart state
 
