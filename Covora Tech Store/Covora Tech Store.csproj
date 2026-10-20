@@ -100,6 +100,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="assets\earbuds.png" />
+    <Content Include="assets\extended-screen.png" />
+    <Content Include="assets\lamp.png" />
+    <Content Include="assets\powerbank.png" />
+    <Content Include="assets\shopping_cart.png" />
+    <Content Include="Cart.aspx" />
+    <Content Include="InternalError.aspx" />
+    <Content Include="NotFound.aspx" />
     <Content Include="Products.aspx" />
     <Content Include="Controls\ProductCards.ascx" />
     <Content Include="assets\covora-logo.png" />
@@ -187,8 +195,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InternalError.aspx.cs">
+      <DependentUpon>InternalError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InternalError.aspx.designer.cs">
+      <DependentUpon>InternalError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCatalog.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="NotFound.aspx.cs">
+      <DependentUpon>NotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NotFound.aspx.designer.cs">
+      <DependentUpon>NotFound.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Products.aspx.cs">
       <DependentUpon>Products.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

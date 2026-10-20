@@ -1,21 +1,26 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Covora_Tech_Store.SiteMaster" %>
+<%--Name: Odane Collins --%>
+<%--Project: Covora Tech Store --%>
+<%--Module: Enterprise Computing --%>
 
-<%-- Shared page shell. Each content page inserts its body into MainContent. --%>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Covora_Tech_Store.SiteMaster" %>
+<%@ Import Namespace="Covora_Tech_Store.Models" %>
+
+
+<%-- This is a shared page shell. Each content page inserts its body into MainContent. --%>
 <!DOCTYPE html>
 
 <html lang="en">
 <head runat="server">
-    <%-- Set text encoding, responsive viewport sizing and the current page title. --%>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> | Covora Tech</title>
-    <%-- Modernizr provides browser feature detection through the registered script bundle. --%>
+
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <%-- Bootstrap supplies the grid, components and utilities. Site.css loads second for brand overrides.
-         Direct stylesheet links avoid processing Bootstrap 5 with the legacy CSS bundle minifier. --%>
+    <%-- Bootstrap supplies the grid, components and utilities. 
+         Site.css loads second for brand overrides. --%>
     <link runat="server" href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link runat="server" href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -24,11 +29,12 @@
 <body>
     <%-- Keyboard shortcut to bypass navigation and move to the main content. --%>
     <a href="#main-content" class="skip-link">Skip to content</a>
+
     <%-- Web Forms server controls share this form; site-form keeps the footer below the content. --%>
     <form runat="server" class="site-form">
         <asp:ScriptManager runat="server">
             <Scripts>
-                <%-- Register Microsoft AJAX, jQuery and the scripts used by Web Forms controls. --%>
+                <%-- Tthe scripts used by Web Forms controls. --%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
@@ -49,17 +55,20 @@
             <%-- Bootstrap navbar-expand-md displays the full menu from 768px; container centres its contents. --%>
             <nav class="navbar navbar-expand-md navbar-light site-nav" aria-label="Main navigation">
                 <div class="container">
+                    <!-- Brand -->
                     <a class="navbar-brand" runat="server" href="~/" aria-label="Covora Tech home">
-                        <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/covora-logo.png" AlternateText="Covora Tech" CssClass="brand-logo" />
+                        <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/covora-logo.png"
+                                   AlternateText="Covora Tech" CssClass="brand-logo" />
                     </a>
-                    <%-- Bootstrap collapse: this button toggles the element with ID storeNavigation on smaller screens. --%>
+
+                    <!-- Toggler -->
                     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#storeNavigation"
                         aria-controls="storeNavigation" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
+                    <!-- Collapsible nav links -->
                     <div class="collapse navbar-collapse" id="storeNavigation">
-                        <%-- Bootstrap ms-auto pushes the links to the right in the expanded menu.
-                             The master code-behind sets active and aria-current on the current page link. --%>
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item"><a id="HomeLink" class="nav-link" runat="server" href="~/">Home</a></li>
                             <li class="nav-item"><a id="ProductsLink" class="nav-link" runat="server" href="~/Products">Products</a></li>
@@ -67,12 +76,23 @@
                             <li class="nav-item"><a id="ContactLink" class="nav-link" runat="server" href="~/Contact">Contact Us</a></li>
                         </ul>
                     </div>
+
+                    <!-- ✅ Cart icon always visible, aligned right -->
+                    <a class="nav-link position-relative ms-3" href="<%= ResolveUrl("~/Cart") %>">
+                        <img src="<%= ResolveUrl("~/assets/shopping_cart.png") %>" alt="Cart" style="width:30px; height:30px;" />
+                        <asp:Label ID="CartBadge" runat="server"
+                            CssClass="position-absolute top-10 start-80 translate-middle badge rounded-pill bg-danger">
+                        </asp:Label>
+                    </a>
                 </div>
             </nav>
+
+
         </header>
         <%-- Content pages target MainContent; tabindex allows focus when using the skip link. --%>
         <main id="main-content" tabindex="-1">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" >
+        </asp:ContentPlaceHolder>
         </main>
         <%-- Bootstrap flex utilities align and wrap footer content, with gap-3 spacing.
              fw-bold, small and mb-0 control text weight, size and bottom margin. --%>

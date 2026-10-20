@@ -1,7 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProductCards.ascx.cs" Inherits="Covora_Tech_Store.Controls.ProductCards" %>
 <%-- Bootstrap row and g-4 provide the product grid and gutters. --%>
 <div class="row g-4">
-    <asp:Repeater ID="ProductRepeater" runat="server" ItemType="Covora_Tech_Store.Models.Product">
+    <asp:Repeater ID="ProductRepeater" runat="server" ItemType="Covora_Tech_Store.Models.Product" OnItemDataBound="ProductCards_ItemDataBound">
         <ItemTemplate>
             <%-- Featured cards fill the row. The catalogue uses one column on phones, two from md (768px), and three from lg (992px). --%>
             <div class='<%# FeaturedOnly ? "col-12" : "col-12 col-md-6 col-lg-4" %>'>
@@ -27,6 +27,31 @@
                         <h2 class="product-title"><%#: Item.Name %></h2>
                         <p class="product-description"><%#: Item.Description %></p>
                         <p class="product-price mt-auto mb-0"><span class="visually-hidden">Unit price: </span><%#: Item.DisplayPrice %></p>
+                            
+
+                        <div class="align-items-baseline d-flex justify-content-between">
+
+                            <%-- Repeater for quantity selection --%>
+                                <div class="d-flex">
+                                    <p class="fw-bold">Quantity: </p>
+
+                                    <ItemTemplate>
+                                        <asp:DropDownList runat="server" ID="QuantityDropDown"
+                                            DataSource='<%# Enumerable.Range(1, Item.availableQuantity) %>'
+                                            CssClass="form-select form-select-sm" />
+                                    </ItemTemplate>
+
+                                </div>
+                                
+                            
+
+
+
+                            <asp:Button runat="server" Text="Add to Cart" CssClass="btn btn-primary"
+                            CommandName="AddToCart" CommandArgument='<%# Item.Id %>' OnCommand="AddToCart_Command" />
+
+
+                        </div>
                     </div>
                 </article>
             </div>
